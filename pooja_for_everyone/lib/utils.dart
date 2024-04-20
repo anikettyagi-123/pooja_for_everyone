@@ -36,6 +36,8 @@ class Reusebale_Container extends StatelessWidget {
                     child:CachedNetworkImage(
                       imageUrl: imagePath,
                       height:MediaQuery.of(context).size.height*.2 ,
+                        width: double.infinity,
+
                         fit: BoxFit.cover,
                       placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
 
