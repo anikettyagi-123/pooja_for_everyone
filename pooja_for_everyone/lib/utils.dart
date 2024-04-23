@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 class Reusebale_Container extends StatelessWidget {
   final String imagePath;
   final String Name;
+  final Color;
 
-  const Reusebale_Container({super.key, required this.imagePath, required this.Name});
+  const Reusebale_Container({super.key, required this.imagePath, required this.Name,this.Color=Colors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class Reusebale_Container extends StatelessWidget {
                       height:MediaQuery.of(context).size.height*.2 ,
                         width: double.infinity,
 
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
 
                     )
@@ -50,7 +51,7 @@ class Reusebale_Container extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*.17 ),
-                    child: Center(child: Text(Name,style: TextStyle(color: Colors.white),)),
+                    child: Center(child: Text(Name,style: TextStyle(color: Color),)),
                   )
                 ],
               ),
