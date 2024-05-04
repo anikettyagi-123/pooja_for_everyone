@@ -1,24 +1,21 @@
 import 'dart:ui';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
-import 'package:pooja_for_everyone/utils.dart';
+import 'package:get/get.dart';
+import 'package:pooja_for_everyone/view/welcome_screen/Welcome_global.dart';
+
+import '../../firebase/welcome_firebase.dart';
+import '../../global/costumised aap bar/appbar.dart';
+import '../Login_otp/Login_screen.dart';
+import '../Login_otp/check_user_login.dart';
+
+class welcomeScreen extends StatelessWidget {
+  welcomeScreen({super.key});
 
 
-
-class Welcome_Screen extends StatelessWidget {
-  Welcome_Screen({super.key});
-
-  final List<String> godImage = [
-    'assets/monday.jpg',
-    'assets/tuesday.jpg',
-    'assets/wednesday.jpg',
-    'assets/thrusday.jpg',
-    'assets/friday.jpg',
-    'assets/saturday.jpg',
-    'assets/sunday.jpg',
-  ];
   final List<String> godMantra = [
     'ॐ नमः शिवाय',
     "ॐ हं हनुमते नमः",
@@ -42,9 +39,9 @@ class Welcome_Screen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Stack(
+        children: [
+          Column(
             children: [
-              Column(
-                      children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * .015,
               ),
@@ -85,26 +82,40 @@ class Welcome_Screen extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: MediaQuery.of(context).size.height * .28,
-                      width: MediaQuery.of(context).size.width * .97,
-                      decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Stack(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              godImage[index],
-                              fit: BoxFit.fill,
-                              height: MediaQuery.of(context).size.height,
-                              width: MediaQuery.of(context).size.width,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                        height: MediaQuery.of(context).size.height * .28,
+                        width: MediaQuery.of(context).size.width * .97,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: FutureBuilder(
+                          future: getImageOfGodUrls(),
+                          builder:
+                              (context,  snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(child: CircularProgressIndicator());
+                            } else if (snapshot.hasData &&
+                                snapshot.data!.isNotEmpty) {
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child:CachedNetworkImage(
+                                  imageUrl: snapshot.data!,
+                                  height:MediaQuery.of(context).size.height*.28 ,
+                                  width: double.infinity,
+
+                                  fit: BoxFit.fill,
+                                  placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+
+                                )
+                              );
+                            } else {
+                              return Center(child: Text('Loading..'));
+                            }
+                          },
+                        )
+
+
+                  )],
                 ),
               ),
               SizedBox(
@@ -128,39 +139,42 @@ class Welcome_Screen extends StatelessWidget {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * .03,
                             ),
-                            const Row(
+                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Reusebale_Container(
+                                reUsebaleContainer(
                                   imagePath:
                                       'https://content.jdmagicbox.com/comp/chandigarh/r9/0172px172.x172.201102213540.f3r9/catalogue/best-pandit-ji-chandigarh-namami-astro--chandigarh-chandigarh-astrologers-62den9a9or.jpg',
-                                  Name: 'Pandit ji',
+                                  name: 'Pandit ji',
+                                  onPressed:  () =>isLogin()
+                                  // Get.to(LoginScreen()),
                                 ),
-                                Reusebale_Container(
+                                reUsebaleContainer(
                                   imagePath:
                                       'https://inventory.rudra-centre.org/static/images/blogs/havan+kund.jpg',
-                                  Name: 'Pooja',
+                                  name: 'Pooja',
                                 ),
                               ],
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * .02,
                             ),
-                            const Row(
+                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Reusebale_Container(
-                                  Color: Colors.black,
+                                const reUsebaleContainer(
+                                  color: Colors.black,
                                   imagePath:
                                       'https://st.depositphotos.com/2235295/2458/i/450/depositphotos_24589939-stock-photo-hindu-om-symbol.jpg',
-                                  Name: 'Mantra',
+                                  name: 'Mantra',
                                 ),
-                                Reusebale_Container(
+                                reUsebaleContainer(
                                   imagePath:
                                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwU_aVpjfqT1FxHZjpyq2ManFJ7477fKtG9Q&usqp=CAU',
-                                  Name: 'Samagrhi',
+                                  name: 'Samagrhi',
+                                  onPressed:  () => isLogin()//Get.to(LoginScreen()),
                                 ),
                               ],
                             ),
@@ -171,15 +185,15 @@ class Welcome_Screen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Reusebale_Container(
+                                reUsebaleContainer(
                                   imagePath:
-                                  'https://files.prokerala.com/calendar/images/en/hindu-calendar-2024-november.png',
-                                  Name: 'Hindu Calender & Varat',
+                                      'https://files.prokerala.com/calendar/images/en/hindu-calendar-2024-november.png',
+                                  name: 'Hindu Calender & Varat',
                                 ),
-                                Reusebale_Container(
+                                reUsebaleContainer(
                                   imagePath:
                                       'https://qph.cf2.quoracdn.net/main-qimg-a1825aa13d8b6ef80151763b881147b4-lq',
-                                  Name: 'Hindu Granth',
+                                  name: 'Hindu Granth',
                                 ),
                               ],
                             ),
@@ -190,22 +204,22 @@ class Welcome_Screen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Reusebale_Container(
+                                reUsebaleContainer(
                                   imagePath:
                                       'https://www.prabhatkhabar.com/wp-content/uploads/2024/02/3-ayodhya-ram-mandir.jpg',
-                                  Name: 'Tradtional Places',
+                                  name: 'Tradtional Places',
                                 ),
-                                Reusebale_Container(
+                                reUsebaleContainer(
                                   imagePath:
                                       'https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0e2e782-44d9-4171-83bc-c5bb8cf36505_940x788.png',
-                                  Name: 'Mantra',
+                                  name: 'Mantra',
+
                                 ),
                               ],
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * .2,
                             ),
-
                           ],
                         ),
                       ),
@@ -213,45 +227,11 @@ class Welcome_Screen extends StatelessWidget {
                   ),
                 ),
               ),
-                      ],
-
-                    ),
-
-              Center(
-                child: Padding(
-                  padding:  EdgeInsets.only(top:MediaQuery.of(context).size.height*.85),
-                  child: 
-                  ClipRect(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                      child:
-                      Container(
-                        height: MediaQuery.of(context).size.height*.06,
-                        width: MediaQuery.of(context).size.width*.9,
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(.01),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.black,width: 1.5)
-                        ),
-                        child:const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-
-                           Icon(Icons.more_vert_outlined,size: 30,),
-                            Icon(Icons.home,size: 30,),
-                           Icon(Icons.shopping_cart,size: 30,),
-                            Icon((Icons.headset_mic))
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
             ],
-          )),
+          ),
+          customised_AppBar()
+        ],
+      )),
     );
   }
 }
