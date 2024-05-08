@@ -4,14 +4,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 
 import '../Controllers/Login&otp/Login_controller.dart';
 
 
+String MobileNo = '';
+
+
 void saveUserMobileNo() async{
-  final LoginController loginController = Get.put(LoginController());
+
+
   User? user = FirebaseAuth.instance.currentUser;
+
   if (user != null) {
     CollectionReference users =
     FirebaseFirestore.instance.collection('user_gernal_mobile_no');
@@ -22,10 +27,12 @@ void saveUserMobileNo() async{
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         users.doc(user.uid).update({
-          'mobileNumber':loginController.phoneController.text.toString() ,
+          'mobileNumber':MobileNo ,
+
+
         });
       } else {
-        users.doc(user.uid).set({"mobileNumber":loginController.phoneController.text.toString() });
+        users.doc(user.uid).set({"mobileNumber":MobileNo });
       }
     })
         .then((_) {})

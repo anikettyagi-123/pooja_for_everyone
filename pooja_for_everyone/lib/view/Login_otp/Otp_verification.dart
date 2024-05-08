@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:pooja_for_everyone/view/Login_otp/check_user_login.dart';
 //import 'package:struggle/cloud_firestore/user_gernal_mobile_number.dart';
 
 
@@ -10,6 +11,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../Controllers/Login&otp/Otp_controller.dart';
 import '../../firebase/Save_User_Mobile_no.dart';
+import '../../firebase/redirect_user.dart';
 import '../../global/Utils.dart';
 //import '../controller/fromGetx.dart';
 //import '../global/Utils.dart';
@@ -22,9 +24,10 @@ import 'Login_screen.dart';
 class VerifyOtp extends StatelessWidget {
   final String verification;
   final String phoneNumberfetch;
+ // final String? selectedSection;
 
   VerifyOtp(
-      {super.key, required this.verification, required this.phoneNumberfetch});
+      {super.key, required this.verification, required this.phoneNumberfetch,});
 
   final VerifyController verifyController = Get.put(VerifyController());
 
@@ -34,6 +37,7 @@ class VerifyOtp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MobileNo = phoneNumberfetch;
 
     return SafeArea(
         child: Scaffold(
@@ -149,8 +153,11 @@ class VerifyOtp extends StatelessWidget {
 
 
                                   saveUserMobileNo();
-                                  print('123ttttttttttttttttttttttttttttttttt');
-                                  Get.off(()=> AddressScreen());
+                                 // isLogin(selectedSection);
+
+
+                                 Get.off(()=> AddressScreen());
+
 
 
 

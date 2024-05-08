@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 
 class addressTextField extends StatelessWidget {
   final TextEditingController controller;
+  final int? maxLength ;
 
   final FormFieldValidator<String>? validator;
   final TextInputType keyboardType;
 
+
+
   addressTextField({
     super.key,
     required this.controller,
+    this.maxLength,
+
 
     this.validator,
     required this.keyboardType,
@@ -21,6 +26,7 @@ class addressTextField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 15.0,right: 15.0,bottom: 15.0),
         child: TextFormField(
+
             controller: controller,
             style: const TextStyle(
               fontSize: 18,
@@ -45,6 +51,7 @@ class addressTextField extends StatelessWidget {
             ),
             validator: validator,
             keyboardType: keyboardType,
+          maxLength: maxLength,
 
               )),
     );

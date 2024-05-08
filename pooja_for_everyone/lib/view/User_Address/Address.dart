@@ -1,24 +1,30 @@
 
 
 
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+
 import 'package:get/get.dart';
 import 'package:pooja_for_everyone/Controllers/User_Address_Controller.dart';
+import 'package:pooja_for_everyone/firebase/redirect_user.dart';
+import 'package:pooja_for_everyone/view/Pandit/Pandit.dart';
+import 'package:pooja_for_everyone/view/Samagrhi/Samagrhi.dart';
 
-import '../../Controllers/Login&otp/Login_controller.dart';
+
+import '../../firebase/user_address.dart';
 import 'Address_global.dart';
 
 class AddressScreen extends StatelessWidget {
-  const AddressScreen({super.key});
+ final String? selectedSection;
+
+
+  const AddressScreen({super.key,this.selectedSection });
 
   @override
   Widget build(BuildContext context) {
     final AddressController  addressController = Get.put(AddressController());
-    final LoginController loginController = Get.put(LoginController());
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -55,16 +61,28 @@ class AddressScreen extends StatelessWidget {
                       }
                       return null;
                     },),
-                    const Padding(
-                      padding:  EdgeInsets.only(left: 15.0,right: 15.0,top: 15.0,),
-                      child: Text('Mobile Number',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
+                   const Row(
+                      children: [
+                         Padding(
+                          padding:  EdgeInsets.only(left: 15.0,top: 15.0,),
+                          child: Text('Mobile Number',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 15.0,left: 5),
+                          child: Text('(required for delivery purpose) '),
+                        ),
+                      ],
                     ),
-                    addressTextField(controller: loginController.phoneController,keyboardType:  TextInputType.number, validator: (String? value) {
+                    addressTextField(controller: addressController.contactNo, maxLength: 10,keyboardType:  TextInputType.number, validator: (String? value) {
                       if (value!.isEmpty) {
                         return 'Mobile no. required';
+                      }else if (value.length!=10){
+                        return 'Please enter a valid no.';
                       }
                       return null;
+
                     },),
+
                     const Padding(
                       padding:  EdgeInsets.only(left: 15.0,right: 15.0,top: 15.0,),
                       child: Text('Flat/House no/Building,Company,Apartment',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
@@ -96,9 +114,11 @@ class AddressScreen extends StatelessWidget {
                       padding:  EdgeInsets.only(left: 15.0,right: 15.0,top: 15.0,),
                       child: Text('Pincode',style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
                     ),
-                    addressTextField(controller: addressController.pinCode, keyboardType:  TextInputType.text, validator: (String? value) {
+                    addressTextField(controller: addressController.pinCode, maxLength: 6,keyboardType:  TextInputType.text, validator: (String? value) {
                       if (value!.isEmpty) {
                         return 'Pincode required';
+                      }else if (value.length != 6){
+                        return 'Please type a valid pincode';
                       }
                       return null;
                     },),
@@ -125,6 +145,13 @@ class AddressScreen extends StatelessWidget {
                                 backgroundColor: Colors.orange),
                           onPressed: (){if(
                             addressController.formKeyAddress.currentState!.validate()){
+                            userAddress();
+
+                            if(selectedSection=='Pandit'){
+                              Get.off(()=> areaPandit());
+                            }else if(selectedSection=='Samagrhi'){
+                              Get.off(()=> samagrhi());
+                            }
 
 
                           }
@@ -153,5 +180,8 @@ class AddressScreen extends StatelessWidget {
       ),
 
     );
+
   }
+
+
 }

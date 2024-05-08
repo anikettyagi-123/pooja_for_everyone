@@ -7,8 +7,10 @@ import '../../Controllers/Login&otp/Login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final LoginController loginController = Get.put(LoginController());
+ // final String? selectedSection;
 
-  LoginScreen({super.key});
+
+  LoginScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +110,7 @@ class LoginScreen extends StatelessWidget {
                           backgroundColor: Colors.orange),
                       onPressed: () {
                         loginController.verifyPhoneNumber();
+
 
                         // String number = loginController.phoneController.text+loginController.countryPicker;
                       },

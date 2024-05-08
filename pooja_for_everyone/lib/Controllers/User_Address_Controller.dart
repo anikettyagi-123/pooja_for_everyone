@@ -11,6 +11,7 @@ class AddressController extends GetxController{
   final pinCode =  TextEditingController();
   final town =  TextEditingController();
   final state =  TextEditingController();
+  final contactNo = TextEditingController();
   final formKeyAddress = GlobalKey<FormState>();
 
 
@@ -25,6 +26,7 @@ class AddressController extends GetxController{
     pinCode.dispose();
     town.dispose();
     state.dispose();
+    contactNo.dispose();
 
 
 

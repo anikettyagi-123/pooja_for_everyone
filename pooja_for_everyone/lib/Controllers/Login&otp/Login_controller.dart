@@ -35,11 +35,12 @@ class LoginController extends GetxController {
           // Handle verification failed
         },
         codeSent: (String verification, int? token) {
+
           loading.value = false;
 
           Get.off(() => VerifyOtp(
               verification: verification,
-              phoneNumberfetch: countryPicker+phoneController.text
+              phoneNumberfetch: phoneController.text
             //countryPicker + phoneController.text,kjh
           ));
         },

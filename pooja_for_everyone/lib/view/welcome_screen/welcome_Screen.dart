@@ -5,8 +5,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pooja_for_everyone/view/godMantra/matra.dart';
 import 'package:pooja_for_everyone/view/welcome_screen/Welcome_global.dart';
 
+import '../../firebase/redirect_user.dart';
 import '../../firebase/welcome_firebase.dart';
 import '../../global/costumised aap bar/appbar.dart';
 import '../Login_otp/Login_screen.dart';
@@ -147,8 +149,9 @@ class welcomeScreen extends StatelessWidget {
                                   imagePath:
                                       'https://content.jdmagicbox.com/comp/chandigarh/r9/0172px172.x172.201102213540.f3r9/catalogue/best-pandit-ji-chandigarh-namami-astro--chandigarh-chandigarh-astrologers-62den9a9or.jpg',
                                   name: 'Pandit ji',
-                                  onPressed:  () =>isLogin()
-                                  // Get.to(LoginScreen()),
+                                  onPressed:  () =>isLogin('Pandit'),
+
+
                                 ),
                                 reUsebaleContainer(
                                   imagePath:
@@ -164,17 +167,23 @@ class welcomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const reUsebaleContainer(
+                                 reUsebaleContainer(
                                   color: Colors.black,
                                   imagePath:
                                       'https://st.depositphotos.com/2235295/2458/i/450/depositphotos_24589939-stock-photo-hindu-om-symbol.jpg',
                                   name: 'Mantra',
+                                  onPressed: (){
+                                    Get.to(()=> Mantra());
+
+                                  },
                                 ),
                                 reUsebaleContainer(
                                   imagePath:
                                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwU_aVpjfqT1FxHZjpyq2ManFJ7477fKtG9Q&usqp=CAU',
                                   name: 'Samagrhi',
-                                  onPressed:  () => isLogin()//Get.to(LoginScreen()),
+                                  onPressed:  () =>
+                                      isLogin('Samagrhi'),
+
                                 ),
                               ],
                             ),
