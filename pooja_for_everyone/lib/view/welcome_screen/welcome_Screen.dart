@@ -5,7 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pooja_for_everyone/view/godMantra/matra.dart';
+import 'package:pooja_for_everyone/view/godMantra/Mantra_For_All.dart';
 import 'package:pooja_for_everyone/view/welcome_screen/Welcome_global.dart';
 
 import '../../firebase/redirect_user.dart';
@@ -13,6 +13,7 @@ import '../../firebase/welcome_firebase.dart';
 import '../../global/costumised aap bar/appbar.dart';
 import '../Login_otp/Login_screen.dart';
 import '../Login_otp/check_user_login.dart';
+import '../godMantra/all_god.dart';
 
 class welcomeScreen extends StatelessWidget {
   welcomeScreen({super.key});
@@ -173,7 +174,7 @@ class welcomeScreen extends StatelessWidget {
                                       'https://st.depositphotos.com/2235295/2458/i/450/depositphotos_24589939-stock-photo-hindu-om-symbol.jpg',
                                   name: 'Mantra',
                                   onPressed: (){
-                                    Get.to(()=> Mantra());
+                                    Get.to(()=> AllGod());
 
                                   },
                                 ),
