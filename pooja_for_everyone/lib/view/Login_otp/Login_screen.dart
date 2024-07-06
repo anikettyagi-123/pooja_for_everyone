@@ -2,7 +2,8 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Controllers/Login&otp/Login_controller.dart';
+
+import '../../controller/Login&otp/Login_controller.dart';
 
 
 class LoginScreen extends StatelessWidget {

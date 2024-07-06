@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-
-import 'view/Splash_screen.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:pooja_for_everyone/view/Splash_screen.dart';
+import 'package:pooja_for_everyone/view/language_translator/languages.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -10,24 +11,24 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await GetStorage.init();
 
   runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    final storedLocale = GetStorage().read('locale') ?? 'en_US';
+
+    return GetMaterialApp(
+      translations: ChangeLanguage(),
+      locale: Locale(storedLocale.split('_')[0], storedLocale.split('_')[1]),
       debugShowCheckedModeBanner: false,
 
-      home: SplashScreen()
-        
-
+      home: SplashScreen(),
     );
   }
 }
-

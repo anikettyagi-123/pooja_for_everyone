@@ -27,7 +27,16 @@ class Profile extends StatelessWidget {
                   },
                 );},
                   child: Text('Logout')),
-            )
+            ),
+            InkWell(
+              onTap: (){
+                Get.changeTheme(ThemeData.light());
+              },
+                child: Text('Light Theme' )),
+            InkWell(
+              onTap:(){  Get.changeTheme(ThemeData.dark());},
+                child: Text('Dark Theme'))
+          
           ],
         
               ),

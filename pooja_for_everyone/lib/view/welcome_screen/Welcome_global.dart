@@ -22,8 +22,8 @@ class reUsebaleContainer extends StatelessWidget {
             InkWell(
               onTap: onPressed,
               child: Container(
-                height:MediaQuery.of(context).size.height*.2 ,
-                width: MediaQuery.of(context).size.width*.45,
+                height:MediaQuery.of(context).size.height*.18 ,
+                width: MediaQuery.of(context).size.width*.40,
                 decoration: BoxDecoration(
                   color: Colors.grey,
                     borderRadius: BorderRadius.circular(10),
@@ -53,8 +53,8 @@ class reUsebaleContainer extends StatelessWidget {
 
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*.17 ),
-                      child: Center(child: Text(name,style: TextStyle(color: color),)),
+                      padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*.15 ),
+                      child: Center(child: Text(name,style: TextStyle(color: color,fontSize: 17),softWrap: true,)),
                     )
                   ],
                 ),

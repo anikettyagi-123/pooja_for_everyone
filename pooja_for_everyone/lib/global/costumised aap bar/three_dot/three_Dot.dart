@@ -37,26 +37,26 @@ class Three_Dot extends StatelessWidget {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * .08,
                       ),
-                       OneForAll(name: 'Profile',onPressed: (){Get.to(()=>Profile());},),
+                       OneForAll(name: 'Profile'.tr,onPressed: (){Get.to(()=>Profile());},),
                       Divider(height: height * .025),
-                      OneForAll(name: 'View Shopping Cart',onPressed: (){
+                      OneForAll(name: 'View Shopping Cart'.tr,onPressed: (){
                         isLogin('Cart');
           
                       },),
                       Divider(height: height * .025),
-                      OneForAll(name: 'Notification',),
+                      OneForAll(name: 'Notification'.tr,),
                       Divider(height: height * .025),
-                      OneForAll(name: 'Transactions',textStyle:const TextStyle(fontWeight: FontWeight.w700,fontSize: 20,fontStyle: FontStyle.italic),
+                      OneForAll(name: 'Transactions'.tr,textStyle:const TextStyle(fontWeight: FontWeight.w700,fontSize: 20,fontStyle: FontStyle.italic),
                       onPressed: (){ isLogin('Transactions');},),
                       Divider(height: height * .025),
-                      OneForAll(name: 'Samagrhi',textStyle:const TextStyle(fontWeight: FontWeight.w700,fontSize: 20,fontStyle: FontStyle.italic),
+                      OneForAll(name: 'Samagrhi'.tr,textStyle:const TextStyle(fontWeight: FontWeight.w700,fontSize: 20,fontStyle: FontStyle.italic),
                       onPressed:(){ isLogin('Samagrhi');} ,),
                       Divider(height:height * .025),
-                      OneForAll(name: 'Pooja Package',),
+                      OneForAll(name: 'Pooja Package'.tr,),
                       Divider(height: height * .025),
-                      OneForAll(name: 'Help',),
+                      OneForAll(name: 'Help'.tr,),
                       Divider(height: height * .025),
-                      OneForAll(name: 'FeedBack',),
+                      OneForAll(name: 'FeedBack'.tr,),
                     ],
                   ),
           

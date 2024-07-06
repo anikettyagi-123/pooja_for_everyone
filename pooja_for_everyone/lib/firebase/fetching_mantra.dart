@@ -21,6 +21,7 @@ Future<String?> getMantraText(String collectionName, String documentId, String f
         if (response != null) {
           // Convert Uint8List to Iterable<int> and then decode it to string
           final textContent = utf8.decode(response);
+
           return textContent;
         }
       }

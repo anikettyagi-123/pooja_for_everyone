@@ -4,16 +4,22 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:pooja_for_everyone/view/godMantra/Mantra_For_All.dart';
+import 'package:pooja_for_everyone/view/festival_pooja/festival_pooja.dart';
+
 import 'package:pooja_for_everyone/view/welcome_screen/Welcome_global.dart';
 
-import '../../firebase/redirect_user.dart';
+
 import '../../firebase/welcome_firebase.dart';
 import '../../global/costumised aap bar/appbar.dart';
-import '../Login_otp/Login_screen.dart';
+
 import '../Login_otp/check_user_login.dart';
+import '../calender/calender_view.dart';
 import '../godMantra/all_god.dart';
+import '../language_translator/language_botton_global.dart';
+import '../traditional places/traditional_places.dart';
+
 
 class welcomeScreen extends StatelessWidget {
   welcomeScreen({super.key});
@@ -58,18 +64,15 @@ class welcomeScreen extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(
                               left: MediaQuery.of(context).size.width * .2),
-                          child: const Center(
+                          child:  Center(
                             child: Text(
-                              'आज का मंत्र',
+                              'आज का मंत्र'.tr,
                               style: (TextStyle(fontSize: 18)),
                             ),
                           ),
                         ),
-                        const Icon(
-                          Icons.g_translate_sharp,
-                          color: Colors.grey,
-                          size: 30,
-                        )
+                         TranslatorButton(),
+
                       ],
                     ),
                     Center(
@@ -86,10 +89,19 @@ class welcomeScreen extends StatelessWidget {
                     ),
                     Container(
                         height: MediaQuery.of(context).size.height * .28,
-                        width: MediaQuery.of(context).size.width * .97,
+                        width: MediaQuery.of(context).size.width * .87,
                         decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            borderRadius: BorderRadius.circular(10)),
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.4),
+                              spreadRadius: 5,
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
                         child: FutureBuilder(
                           future: getImageOfGodUrls(),
                           builder:
@@ -149,15 +161,15 @@ class welcomeScreen extends StatelessWidget {
                                 reUsebaleContainer(
                                   imagePath:
                                       'https://content.jdmagicbox.com/comp/chandigarh/r9/0172px172.x172.201102213540.f3r9/catalogue/best-pandit-ji-chandigarh-namami-astro--chandigarh-chandigarh-astrologers-62den9a9or.jpg',
-                                  name: 'Pandit ji',
+                                  name: 'Pandit ji'.tr,
                                   onPressed:  () =>isLogin('Pandit'),
 
 
                                 ),
                                 reUsebaleContainer(
                                   imagePath:
-                                      'https://inventory.rudra-centre.org/static/images/blogs/havan+kund.jpg',
-                                  name: 'Pooja',
+                                      'https://ashtok.com/cdn/shop/products/CopperHavanKundTraditionalPoojaIndian7_1024x1024.jpg?v=1663305758',
+                                  name: 'Pooja'.tr,
                                 ),
                               ],
                             ),
@@ -172,7 +184,7 @@ class welcomeScreen extends StatelessWidget {
                                   color: Colors.black,
                                   imagePath:
                                       'https://st.depositphotos.com/2235295/2458/i/450/depositphotos_24589939-stock-photo-hindu-om-symbol.jpg',
-                                  name: 'Mantra',
+                                  name: 'Mantra'.tr,
                                   onPressed: (){
                                     Get.to(()=> AllGod());
 
@@ -181,7 +193,8 @@ class welcomeScreen extends StatelessWidget {
                                 reUsebaleContainer(
                                   imagePath:
                                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwU_aVpjfqT1FxHZjpyq2ManFJ7477fKtG9Q&usqp=CAU',
-                                  name: 'Samagrhi',
+                                  name: 'Samagrhi'.tr,
+
                                   onPressed:  () =>
                                       isLogin('Samagrhi'),
 
@@ -191,38 +204,70 @@ class welcomeScreen extends StatelessWidget {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * .02,
                             ),
-                            const Row(
+                            Container(
+                              height: MediaQuery.of(context).size.height * .10,
+                              width: MediaQuery.of(context).size.width * .87,
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade200,
+                                borderRadius: BorderRadius.circular(5,),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.4),
+                                    spreadRadius: 5,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Image.network('https://www.shutterstock.com/image-vector/hand-holding-om-flag-temple-260nw-2360906707.jpg',fit: BoxFit.cover,),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height * .02,
+                            ),
+
+                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 reUsebaleContainer(
                                   imagePath:
-                                      'https://files.prokerala.com/calendar/images/en/hindu-calendar-2024-november.png',
-                                  name: 'Hindu Calender & Varat',
+                                  'https://www.prabhatkhabar.com/wp-content/uploads/2024/02/3-ayodhya-ram-mandir.jpg',
+                                  name: 'Traditional Places'.tr,
+                                  onPressed: (){
+                                    Get.to(()=>TraditonalPlaces());
+                                  },
+
                                 ),
+
                                 reUsebaleContainer(
                                   imagePath:
                                       'https://qph.cf2.quoracdn.net/main-qimg-a1825aa13d8b6ef80151763b881147b4-lq',
-                                  name: 'Hindu Granth',
+                                  name: 'Hindu Granth'.tr,
                                 ),
                               ],
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * .02,
                             ),
-                            const Row(
+                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 reUsebaleContainer(
                                   imagePath:
-                                      'https://www.prabhatkhabar.com/wp-content/uploads/2024/02/3-ayodhya-ram-mandir.jpg',
-                                  name: 'Tradtional Places',
+                                  'https://files.prokerala.com/calendar/images/en/hindu-calendar-2024-november.png',
+                                  name: 'Hindu Calender'.tr,onPressed: (){
+                                  Get.to(()=>CalenderView());
+                                },
                                 ),
+
                                 reUsebaleContainer(
                                   imagePath:
-                                      'https://substackcdn.com/image/fetch/w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fc0e2e782-44d9-4171-83bc-c5bb8cf36505_940x788.png',
-                                  name: 'Mantra',
+                                      'https://www.livemint.com/lm-img/img/2023/11/10/600x338/Diwali_2023_pooja_timings_1699604896900_1699604897141.jpg',
+                                  name: 'Festival Pooja'.tr,
+                                  onPressed: (){
+                                    Get.to(()=>FestivalPooja());
+                                  },
 
                                 ),
                               ],

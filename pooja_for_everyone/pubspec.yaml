@@ -48,16 +48,29 @@ dependencies:
   firebase_auth: ^4.19.4
   country_code_picker: ^3.0.0
   pin_code_fields: ^8.0.1
+  flutter_tts: ^4.0.2
+  syncfusion_flutter_pdfviewer: ^25.2.4
+
+
+  get_storage: ^2.1.1
+
+
+
+
+
+
+
+
 
 
 flutter_native_splash:
-    color: "#F78734"
+    color: "#F9981D"
     android: true
     ios: true
     web: true
     android_gravity: fill
     android_12:
-      color: "#F78734"
+      color: "#F9981D"
 
 
 
@@ -88,7 +101,29 @@ flutter:
     - assets/swastik.png
     - assets/back.png
     - assets/nameskar.png
-   
+    - assets/durga mata.png
+    - assets/ganesh ji.png
+    - assets/ganga mata.jpg
+    - assets/gau mata.jpg
+    - assets/gayatri mata.jpg
+    - assets/hanuman ji.jpg
+    - assets/krishna ji.jpg
+    - assets/lakshmi mata.png
+    - assets/parvati mata.jpg
+    - assets/radha rani.jpg
+    - assets/ram ji.jpg
+    - assets/sai baba.jpg
+    - assets/santoshi mata.jpg
+    - assets/saraswati mata.jpg
+    - assets/shani dev.jpg
+    - assets/shiv ji.png
+    - assets/tulsimata .jpg
+    - assets/vaishno mata.jpg
+    - assets/vishnu ji.jpg
+    - assets/sita mata.jpg
+    - assets/baba-shyam.jpg
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

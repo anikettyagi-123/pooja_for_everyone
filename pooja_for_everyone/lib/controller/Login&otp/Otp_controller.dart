@@ -55,4 +55,3 @@ class VerifyController extends GetxController {
 
 
 }
-

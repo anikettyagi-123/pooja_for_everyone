@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../Controllers/User_Address_Controller.dart';
+
+import '../controller/User_Address_Controller.dart';
 
 void userAddress() async {
   final AddressController addressController = Get.put(AddressController());

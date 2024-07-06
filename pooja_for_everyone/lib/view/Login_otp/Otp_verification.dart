@@ -9,7 +9,8 @@ import 'package:pooja_for_everyone/view/Login_otp/check_user_login.dart';
 
 //import 'package:struggle/view/Login_screen.dart';
 
-import '../../Controllers/Login&otp/Otp_controller.dart';
+
+import '../../controller/Login&otp/Otp_controller.dart';
 import '../../firebase/Save_User_Mobile_no.dart';
 import '../../firebase/redirect_user.dart';
 import '../../global/Utils.dart';
