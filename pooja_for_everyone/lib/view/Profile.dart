@@ -22,7 +22,7 @@ class Profile extends StatelessWidget {
                 onTap: (){auth.signOut().then(
                       (value) {
                     Get.deleteAll();
-                    Get.offAll(()=> welcomeScreen());
+                    Get.offAll(()=> WelcomeScreen());
 
                   },
                 );},

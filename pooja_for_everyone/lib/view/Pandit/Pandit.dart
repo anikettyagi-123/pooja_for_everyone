@@ -7,13 +7,16 @@ class areaPandit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            Center(child: Text('Pandit'))
-          ],
-        ),
+    return  Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.orangeAccent,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(child: Text('Currently no Pandit Ji Availabele '))
+        ],
       ),
     );
   }

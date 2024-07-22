@@ -16,7 +16,7 @@ isLogin(String? sectionClicked ) {
 
 
   }else{
-    Get.to(()=>LoginScreen());
+    Get.to(()=>LoginScreen(selectedSection: sectionClicked,));
 
   }
 

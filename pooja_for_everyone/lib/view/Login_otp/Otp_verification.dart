@@ -25,10 +25,10 @@ import 'Login_screen.dart';
 class VerifyOtp extends StatelessWidget {
   final String verification;
   final String phoneNumberfetch;
- // final String? selectedSection;
+  final String? selectedSection;
 
   VerifyOtp(
-      {super.key, required this.verification, required this.phoneNumberfetch,});
+      {super.key, required this.verification, required this.phoneNumberfetch,this.selectedSection});
 
   final VerifyController verifyController = Get.put(VerifyController());
 
@@ -157,7 +157,7 @@ class VerifyOtp extends StatelessWidget {
                                  // isLogin(selectedSection);
 
 
-                                 Get.off(()=> AddressScreen());
+                                 Get.off(()=> AddressScreen(selectedSection: selectedSection,));
 
 
 

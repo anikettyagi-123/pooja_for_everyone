@@ -18,7 +18,7 @@ Future<List<Map<String, dynamic>>?> getNewsList() async {
     }
   } catch (error) {
     // Error occurred
-    print('Error fetching news: $error');
+
     return null;
   }
 }

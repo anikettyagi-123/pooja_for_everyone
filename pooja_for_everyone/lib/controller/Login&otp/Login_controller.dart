@@ -14,6 +14,7 @@ class LoginController extends GetxController {
   final phoneController = TextEditingController();
   final auth = FirebaseAuth.instance;
   var countryPicker = '+91';
+  String? selectedSection;
 
 
 
@@ -40,7 +41,9 @@ class LoginController extends GetxController {
 
           Get.off(() => VerifyOtp(
               verification: verification,
-              phoneNumberfetch: phoneController.text
+              phoneNumberfetch: phoneController.text,
+            selectedSection: selectedSection,
+
             //countryPicker + phoneController.text,kjh
           ));
         },

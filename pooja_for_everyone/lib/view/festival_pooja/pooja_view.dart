@@ -20,6 +20,7 @@ class PoojaVidhi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         title: Center(child: Text(godName.tr,style: TextStyle(fontSize: 20),)),
         backgroundColor: Colors.orangeAccent,
@@ -28,6 +29,7 @@ class PoojaVidhi extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
+
           children: [
 
             FutureBuilder(future: getFestivalText(fieldName),

@@ -7,11 +7,14 @@ import '../../controller/Login&otp/Login_controller.dart';
 
 
 class LoginScreen extends StatelessWidget {
-  final LoginController loginController = Get.put(LoginController());
- // final String? selectedSection;
+  final  loginController = Get.put(LoginController());
+  final String? selectedSection;
 
 
-  LoginScreen({super.key,});
+  LoginScreen({super.key,this.selectedSection}){
+    loginController.selectedSection = selectedSection; // Pass selectedSection to LoginController
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,7 @@ class LoginScreen extends StatelessWidget {
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
+         // backgroundColor: Colors.grey.shade200,
           resizeToAvoidBottomInset: false,
           body: Stack(
             children: [

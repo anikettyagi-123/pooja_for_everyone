@@ -40,19 +40,25 @@ dependencies:
   flutter_native_splash: ^2.4.0
   animated_text_kit: ^4.2.2
   cached_network_image: ^3.3.1
-  firebase_core: ^2.30.1
-  firebase_storage: ^11.5.6
-  cloud_firestore: ^4.17.2
+  firebase_core: ^3.2.0
+  firebase_storage: ^12.1.1
+  cloud_firestore: ^5.1.0
   get: ^4.6.6
   fluttertoast: ^8.2.5
-  firebase_auth: ^4.19.4
+  firebase_auth: ^5.1.2
   country_code_picker: ^3.0.0
   pin_code_fields: ^8.0.1
   flutter_tts: ^4.0.2
-  syncfusion_flutter_pdfviewer: ^25.2.4
+  syncfusion_flutter_pdfviewer: ^26.1.41
+  audioplayers: ^6.0.0
+  lottie: ^3.1.2
+
 
 
   get_storage: ^2.1.1
+  flutter_cache_manager: ^3.3.2
+  video_player: ^2.9.1
+
 
 
 
@@ -83,7 +89,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -122,6 +128,10 @@ flutter:
     - assets/vishnu ji.jpg
     - assets/sita mata.jpg
     - assets/baba-shyam.jpg
+    - assets/sanatan.png
+    - assets/diya.png
+    - animation/flower.json
+
 
 
 

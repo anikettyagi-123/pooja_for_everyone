@@ -9,7 +9,7 @@ class reUsebaleContainer extends StatelessWidget {
   final Color color;
     final VoidCallback? onPressed;
 
-  const reUsebaleContainer({super.key, required this.imagePath, required this.name,this.color=Colors.white,this.onPressed});
+  const reUsebaleContainer({super.key, required this.imagePath, required this.name,this.color=Colors.black,this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,19 @@ class reUsebaleContainer extends StatelessWidget {
             InkWell(
               onTap: onPressed,
               child: Container(
-                height:MediaQuery.of(context).size.height*.18 ,
-                width: MediaQuery.of(context).size.width*.40,
+                height:MediaQuery.of(context).size.height*.21 ,
+                width: MediaQuery.of(context).size.width*.41,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: Colors.blueGrey.withOpacity(.2),
                     borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blueGrey.withOpacity(0.2),
+                      spreadRadius: 4,
+                      blurRadius: 4,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
 
 
 
@@ -34,12 +42,12 @@ class reUsebaleContainer extends StatelessWidget {
                 child: Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
 
 
                       child:CachedNetworkImage(
                         imageUrl: imagePath,
-                        height:MediaQuery.of(context).size.height*.2 ,
+                        height:MediaQuery.of(context).size.height*.185 ,
                           width: double.infinity,
 
                           fit: BoxFit.fill,
@@ -53,7 +61,7 @@ class reUsebaleContainer extends StatelessWidget {
 
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*.15 ),
+                      padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*.183 ),
                       child: Center(child: Text(name,style: TextStyle(color: color,fontSize: 17),softWrap: true,)),
                     )
                   ],
