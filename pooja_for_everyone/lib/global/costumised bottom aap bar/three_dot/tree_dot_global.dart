@@ -9,7 +9,7 @@ class OneForAll extends StatelessWidget {
   final TextStyle? textStyle;
   final VoidCallback? onPressed;
 
-  OneForAll({super.key, required this.name,this.textStyle,this.onPressed });
+  const OneForAll({super.key, required this.name,this.textStyle,this.onPressed });
 
   @override
   Widget build(BuildContext context) {

@@ -38,7 +38,7 @@ class HinduCalneder extends StatelessWidget {
                   } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     Map<String, dynamic>? calender = snapshot.data;
 
-                    return  Container(
+                    return  SizedBox(
                         height: MediaQuery.of(context).size.height * .45,
                         width: double.infinity,
                         child: InteractiveViewer(

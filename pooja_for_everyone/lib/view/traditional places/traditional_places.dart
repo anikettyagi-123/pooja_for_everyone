@@ -1,7 +1,9 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:pooja_for_everyone/view/Nwespage/news.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../global/appbar.dart';
 
 class TraditonalPlaces extends StatelessWidget {
   const TraditonalPlaces({super.key});
@@ -10,16 +12,21 @@ class TraditonalPlaces extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar:AppBar(
-          title: const  Padding(
-            padding:  EdgeInsets.only(top: 15),
-            child: Center(child: Text('Traditional Places',style: TextStyle(fontSize: 25,),)),
-          ),
-          backgroundColor: Colors.orangeAccent.shade200,
-            automaticallyImplyLeading: false,
+        appBar: MyAppbar(),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(child: Lottie.asset('animation/error.json',
+                //  height: MediaQuery.of(context).size.height*1,
+                width: MediaQuery.of(context).size.width*.5
+            ),
 
-        ) ,
-        body: Column()
+
+            ),
+            Center(child: Text('Travel plans will be available shortly ',style: TextStyle(fontSize: 17),))
+          ],
+        ),
 
       )
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pooja_for_everyone/global/costumised%20aap%20bar/three_dot/tree_dot_global.dart';
+import 'package:pooja_for_everyone/global/costumised%20bottom%20aap%20bar/three_dot/tree_dot_global.dart';
+
 import 'package:pooja_for_everyone/view/Profile.dart';
 
-import '../../../view/Login_otp/Login_screen.dart';
 import '../../../view/Login_otp/check_user_login.dart';
 
 class Three_Dot extends StatelessWidget {

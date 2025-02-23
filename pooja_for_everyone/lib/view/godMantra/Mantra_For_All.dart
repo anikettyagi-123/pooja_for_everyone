@@ -11,11 +11,11 @@ class Mantra extends StatelessWidget {
   final String viewName;
 
   const Mantra({
-    Key? key,
+    super.key,
     required this.godName,
     required this.documentId,
     required this.viewName
-  }) : super(key: key);
+  });
 
   Widget buildMantraTab(String category) {
 
@@ -30,7 +30,7 @@ class Mantra extends StatelessWidget {
             builder: (context,  snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const  Padding(
-                  padding: const EdgeInsets.only(top: 200),
+                  padding: EdgeInsets.only(top: 200),
                   child: Center(child: CircularProgressIndicator()),
                 );
               } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {

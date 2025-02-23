@@ -64,8 +64,6 @@ class PdfController extends GetxController {
       final pdfUrl = await getGranthText(fieldName, collectionName, documentId);
       final file = await DefaultCacheManager().getSingleFile(pdfUrl!);
       pdfPath.value = file.path;
-    } catch (e) {
-      print('Error loading PDF: $e');
     } finally {
       isLoading.value = false;
     }

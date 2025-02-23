@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:pooja_for_everyone/view/Login_otp/check_user_login.dart';
 //import 'package:struggle/cloud_firestore/user_gernal_mobile_number.dart';
 
 
@@ -12,13 +11,14 @@ import 'package:pooja_for_everyone/view/Login_otp/check_user_login.dart';
 
 import '../../controller/Login&otp/Otp_controller.dart';
 import '../../firebase/Save_User_Mobile_no.dart';
+
 import '../../firebase/redirect_user.dart';
+import '../../firebase/redirect_via_otp.dart';
 import '../../global/Utils.dart';
 //import '../controller/fromGetx.dart';
 //import '../global/Utils.dart';
 
 import '../User_Address/Address.dart';
-import '../welcome_screen/welcome_Screen.dart';
 import 'Login_screen.dart';
 //import 'location_screen.dart';
 
@@ -132,7 +132,7 @@ class VerifyOtp extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        Container(
+                        SizedBox(
                           height: MediaQuery.of(context).size.height * .06,
                           width: MediaQuery.of(context).size.width * .90,
                           child: ElevatedButton(
@@ -157,7 +157,7 @@ class VerifyOtp extends StatelessWidget {
                                  // isLogin(selectedSection);
 
 
-                                 Get.off(()=> AddressScreen(selectedSection: selectedSection,));
+                                  RedirectUserViaOtp(selectedSection);
 
 
 

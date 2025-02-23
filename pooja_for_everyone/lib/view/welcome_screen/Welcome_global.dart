@@ -1,79 +1,98 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'dart:typed_data';
 
-class reUsebaleContainer extends StatelessWidget {
+class ReusableContainer extends StatelessWidget {
   final String imagePath;
   final String name;
   final Color color;
-    final VoidCallback? onPressed;
+  final String blur;
+  final VoidCallback? onPressed;
 
-  const reUsebaleContainer({super.key, required this.imagePath, required this.name,this.color=Colors.black,this.onPressed});
+  const ReusableContainer({
+    super.key,
+    required this.imagePath,
+    required this.name,
+    this.color = Colors.black,
+    this.onPressed,
+    required this.blur,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min, // Ensures it wraps the content properly
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            InkWell(
-              onTap: onPressed,
-              child: Container(
-                height:MediaQuery.of(context).size.height*.21 ,
-                width: MediaQuery.of(context).size.width*.41,
+        InkWell(
+          onTap: onPressed,
+          child: Column(
+            children: [
+              // Image Container
+              Container(
+                height: MediaQuery.of(context).size.height * .192,
+                width: MediaQuery.of(context).size.width * .41,
                 decoration: BoxDecoration(
-                  color: Colors.blueGrey.withOpacity(.2),
-                    borderRadius: BorderRadius.circular(10),
+                  color: Colors.blueGrey.withAlpha(51),
+                  borderRadius: BorderRadius.circular(5),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.blueGrey.withOpacity(0.2),
+                      color: Colors.blueGrey.withAlpha(51),
                       spreadRadius: 4,
                       blurRadius: 4,
                       offset: Offset(0, 3),
                     ),
                   ],
-
-
-
                 ),
-                child: Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Stack(
+                    children: [
+                      // BlurHash as Background
+                      Positioned.fill(
+                        child: BlurHash(
+                          hash: blur,
+                          imageFit: BoxFit.fill,
+                        ),
+                      ),
 
-
-                      child:CachedNetworkImage(
-                        imageUrl: imagePath,
-                        height:MediaQuery.of(context).size.height*.185 ,
-                          width: double.infinity,
-
+                      // Cached Network Image with FadeIn Transition
+                      Positioned.fill(
+                        child: CachedNetworkImage(
+                          imageUrl: imagePath,
                           fit: BoxFit.fill,
-                        placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-
-                      )
-
-
-
-
-
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*.183 ),
-                      child: Center(child: Text(name,style: TextStyle(color: color,fontSize: 17),softWrap: true,)),
-                    )
-                  ],
+                          placeholder: (context, url) => SizedBox(),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          imageBuilder: (context, imageProvider) {
+                            return FadeInImage(
+                              placeholder: MemoryImage(Uint8List(0)),
+                              image: imageProvider,
+                              fit: BoxFit.fill,
+                              fadeInDuration: Duration(milliseconds: 800),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-
-
-          ],
-        )
+              // Text Below Image
+              Padding(
+                padding: const EdgeInsets.only(top: 6.0), // Space between image and text
+                child: Text(
+                  name,
+                  style: TextStyle(color: color, fontSize: 17),
+                  softWrap: true,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
 }
+

@@ -4,14 +4,18 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pooja_for_everyone/global/costumised%20aap%20bar/three_dot/three_Dot.dart';
+import 'package:pooja_for_everyone/global/costumised%20bottom%20aap%20bar/three_dot/three_Dot.dart';
+
+
+import '../../controller/welcomew controller.dart';
+import '../../view/cart/cart.dart';
 
 class customised_AppBar extends StatelessWidget {
-  customised_AppBar ({super.key});
+  const customised_AppBar ({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final volumeController = Get.put(VolumeController());
     return
         Center(
         child: Padding(
@@ -34,15 +38,25 @@ class customised_AppBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
-                    InkWell(
+                    GestureDetector(
                       onTap:(){
                         Get.to(()=>  Three_Dot());
+                        volumeController.player
+                            .stop(); //this i have to stop audio when moving to new screen
+                        volumeController.volume(false);
 
                             },
 
                         child: Icon(Icons.more_vert_outlined,size: 30,)),
                     Icon(Icons.notifications,size: 30,),
-                    Icon(Icons.shopping_cart,size: 30,),
+                    GestureDetector(
+                      onTap: (){
+                        Get.to(()=>CartView());
+                        volumeController.player
+                            .stop(); //this i have to stop audio when moving to new screen
+                        volumeController.volume(false);
+                      },
+                        child: Icon(Icons.shopping_cart,size: 30,)),
                     Icon((Icons.headset_mic))
                   ],
                 ),

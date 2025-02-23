@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import 'granth_data.dart';
+import '../../Granth_content.dart';
 
 class ViewWidget extends StatelessWidget {
   final String collectionName ;
@@ -28,7 +27,7 @@ class ViewWidget extends StatelessWidget {
           ),
 
 
-         child: Container(
+         child: SizedBox(
              height: MediaQuery.of(context).size.height*.03,
              width:  MediaQuery.of(context).size.width*.25,
              child: Text(chapterNo,style: TextStyle(fontSize: 19,color:Colors.black,fontStyle: FontStyle.normal)))

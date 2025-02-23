@@ -16,7 +16,7 @@ Future<List<Map<String, dynamic>>?> Pandit_locations() async {
     await users.get();
 
     if (querySnapshot.docs.isNotEmpty) {
-      querySnapshot.docs.forEach((doc) {
+      for (var doc in querySnapshot.docs) {
         Map<String, dynamic> shopLocation = {
           'ShopImage': doc.get('ShopImage'),
           'latitude': doc.get('latitude'),
@@ -28,7 +28,7 @@ Future<List<Map<String, dynamic>>?> Pandit_locations() async {
           'Category':doc.get('Category')
         };
         panditLocations.add(shopLocation);
-      });
+      }
       return   panditLocations;
     }
   }

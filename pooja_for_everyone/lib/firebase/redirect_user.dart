@@ -4,13 +4,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:pooja_for_everyone/view/Login_otp/Login_screen.dart';
 import 'package:pooja_for_everyone/view/Pandit/Pandit.dart';
 import 'package:pooja_for_everyone/view/User_Address/Address.dart';
 
 import '../global/Utils.dart';
-import '../view/Samagrhi/Samagrhi.dart';
+import '../view/Samagrhi/samagrhi.dart';
 
 void RedirectUser(String? sectionSelected) async{
   try {
@@ -30,7 +28,7 @@ void RedirectUser(String? sectionSelected) async{
               Get.to(() => areaPandit());
 
             }else if (sectionSelected=='Samagrhi'){
-              Get.to(() => samagrhi());
+              Get.to(() => Samagrhi());
             }
 
           } //else  {

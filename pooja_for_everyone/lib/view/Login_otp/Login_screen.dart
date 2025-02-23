@@ -107,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .03,
                   ),
-                  Container(
+                  SizedBox(
                     height: MediaQuery.of(context).size.height * .06,
                     width: MediaQuery.of(context).size.width * .90,
                     child: ElevatedButton(

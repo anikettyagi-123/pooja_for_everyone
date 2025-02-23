@@ -9,7 +9,7 @@ class addressTextField extends StatelessWidget {
 
 
 
-  addressTextField({
+  const addressTextField({
     super.key,
     required this.controller,
     this.maxLength,
@@ -21,7 +21,7 @@ class addressTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height*.09,
       child: Padding(
         padding: const EdgeInsets.only(left: 15.0,right: 15.0,bottom: 15.0),

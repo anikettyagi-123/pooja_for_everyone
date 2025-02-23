@@ -1,15 +1,11 @@
-
-
-
 import 'dart:async';
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:gif_view/gif_view.dart';
 
 import '../controller/welcomew controller.dart';
-import '../firebase/welcome_firebase.dart';
+
 import 'welcome_screen/welcome_Screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,53 +15,82 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    final volumeController = Get.put(VolumeController());
-    // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 3), () {Get.offAll(()=>WelcomeScreen());
+    Get.put(VolumeController());
 
-    } );}
+    Timer(const Duration(milliseconds: 1500), () {
+      Get.offAll(() => WelcomeScreen());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final volumeController = Get.put(VolumeController());
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: Colors.orangeAccent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset('assets/swastik.png',
-              height: MediaQuery.of(context).size.height*.2,
-              width: MediaQuery.of(context).size.width*.8,),
-              SizedBox(
-                height: MediaQuery.of(context).size.height*.02,
-              ),
-              AnimatedTextKit(
-                animatedTexts: [
-                  ScaleAnimatedText('ॐ स्वागतम्',
-                      textStyle: const TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                      duration: const Duration(seconds: 5))
-                ],
-              ),
+        //  backgroundColor: Colors.orangeAccent,
+        body: Center(
+          child: GifView.asset(
+            'assets/splash.gif',
+            width: double.infinity,
+            height: double.infinity,
+            // Full width
 
-
-            ],
+           fit: BoxFit.cover
+            , // Covers the full width properly
           ),
         ),
-
       ),
     );
+    // Middle Content: Logo + Text
+    // Expanded(
+    //   flex: 2, // Takes more space in the center
+    //   child: Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [
+    //       // Swastik Logo
+    //       Image.asset(
+    //         'assets/swastik.png',
+    //         height: height * 0.18, // Adjusted size
+    //         width: width * 0.35,
+    //         fit: BoxFit.contain,
+    //       ),
+    //       SizedBox(height: height * 0.03),
+    //
+    //       // Animated Text
+    //       AnimatedTextKit(
+    //         animatedTexts: [
+    //           ScaleAnimatedText(
+    //             'ॐ स्वागतम्',
+    //             textStyle: TextStyle(
+    //               fontSize: height * 0.06,
+    //               fontWeight: FontWeight.bold,
+    //               color: Colors.white,
+    //             ),
+    //             duration: const Duration(seconds: 3),
+    //           ),
+    //         ],
+    //       ),
+    //     ],
+    //   ),
+    // ),
+
+    // Bottom Splash Image
+    // Expanded(
+    //   flex: 1, // Less space, so image stays at bottom
+    //   child: Align(
+    //     alignment: Alignment.bottomCenter,
+    //     child:  GifView.asset(
+    //       'assets/splash.gif',
+    //       width: double.infinity, // Full width
+    //       fit: BoxFit.cover, // Covers the full width properly
+    //     ),
+    //   ),
+    // ),
   }
 }

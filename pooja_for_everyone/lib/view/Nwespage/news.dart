@@ -144,7 +144,7 @@ class NewsPage extends StatelessWidget {
 class VideoPlayerWidget extends StatelessWidget {
   final String videoUrl;
 
-  const VideoPlayerWidget({required this.videoUrl});
+  const VideoPlayerWidget({super.key, required this.videoUrl});
 
   @override
   Widget build(BuildContext context) {

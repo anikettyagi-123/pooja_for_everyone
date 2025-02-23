@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'chapter_global.dart';
-import 'granth_data.dart';
 
 class ChapterView extends StatelessWidget {
   final String collectionName;
 
   final String documentId;
 
-  ChapterView(
+  const ChapterView(
       {super.key, required this.collectionName, required this.documentId});
 
   @override

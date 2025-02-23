@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 
 
@@ -25,7 +24,7 @@ class TranslatorButton extends StatelessWidget {
                 ],
               ),
 
-              content: Container(
+              content: SizedBox(
                 height: MediaQuery.of(context).size.height*.15,
                 child: Column(
 

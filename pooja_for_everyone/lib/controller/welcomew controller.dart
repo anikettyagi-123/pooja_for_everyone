@@ -7,7 +7,7 @@ class VolumeController extends GetxController {
     "https://drive.google.com/uc?export=download&id=1pE7RIx2B_pVN5N7zmS7j6_1DvEec8j53",
     "https://drive.google.com/uc?export=download&id=1OYD2Ey9CxdNFNgF_JhzFrLQ6_wdgzcob",
     "https://drive.google.com/uc?export=download&id=1wdxSOWfmC0as7GUkBeIUUqgcMBaLvVaz",
-    "https://drive.google.com/uc?export=download&id=16Ypts8_wTge1gB0IZQEiFW8uoFEu3Azj",
+    "https://drive.google.com/uc?export=download&id=1GT2efDp23qGPRAkWzfI6vQzGjpkq22jN",
     "https://drive.google.com/uc?export=download&id=1204JNfFGNbURPF0hbP4A4vphyLWbdS9l",
     "https://drive.google.com/uc?export=download&id=1qzr3T8oq6V00LqF7nq9J6obd8hByGIbm"
   ];
@@ -78,7 +78,7 @@ class LottieAnimationController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    Future.delayed(Duration(milliseconds: 2200), () {
+    Future.delayed(Duration(milliseconds: 3500), () {
       showAnimation.value = false;
       dispose();
     });

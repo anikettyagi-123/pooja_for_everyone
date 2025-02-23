@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:pooja_for_everyone/view/godMantra/Mantra_For_All.dart';
 
 class ALlGodGlobal extends StatelessWidget {
@@ -26,17 +25,20 @@ class ALlGodGlobal extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1
-                  )
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1
+                    )
+                  ),
+
+                  height:MediaQuery.of(context).size.height*.06 ,
+                  width:MediaQuery.of(context).size.width*.13  ,
+                  child: Image.asset(imagePath,fit: BoxFit.fill,),
                 ),
-               
-                height:MediaQuery.of(context).size.height*.06 ,
-                width:MediaQuery.of(context).size.width*.13  ,
-                child: Image.asset(imagePath,fit: BoxFit.fill,),
               ),
              // Image.asset('assets/durga,png',height: 50,width: 5,),
               Padding(
